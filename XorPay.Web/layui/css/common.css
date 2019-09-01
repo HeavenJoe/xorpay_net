@@ -1,0 +1,15 @@
+﻿body {
+    background: #ccc;
+}
+
+.container {
+    background: #fff;
+    width: 94%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 3%;
+}
+
+fieldset.layui-field-title legend {
+    font-size: 16px;
+}

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XorPay.Web", "XorPay.Web\XorPay.Web.csproj", "{772B228C-C8CF-48EC-91A5-2EFE273F93BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XorPay.SDK", "XorPay.SDK\XorPay.SDK.csproj", "{8FD02983-B60C-4D40-80EF-7F373BC8E50B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{772B228C-C8CF-48EC-91A5-2EFE273F93BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{772B228C-C8CF-48EC-91A5-2EFE273F93BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{772B228C-C8CF-48EC-91A5-2EFE273F93BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{772B228C-C8CF-48EC-91A5-2EFE273F93BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FD02983-B60C-4D40-80EF-7F373BC8E50B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FD02983-B60C-4D40-80EF-7F373BC8E50B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FD02983-B60C-4D40-80EF-7F373BC8E50B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FD02983-B60C-4D40-80EF-7F373BC8E50B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7D68220-604C-46BC-B5CF-4CA5D65E8FC8}
+	EndGlobalSection
+EndGlobal

@@ -20,4 +20,4 @@ XorPay简介：
 --------------
 如果这个项目对您有用，我们欢迎各方任何形式的捐助，也包括参与到项目代码更新或意见反馈中来。谢谢！
 
-[资金捐助赞赏](https://www.jinliniuan.com/contact/82.html)
+![Image text](http://xorpay.jinliniuan.com/alipay.jpg)

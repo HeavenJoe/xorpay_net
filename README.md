@@ -1,4 +1,4 @@
-# XorPay_Net [![license](https://img.shields.io/github/license/JeffreySu/WeiXinMPSDK.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+# XorPay_Net [![license](https://img.shields.io/github/license/HeavenJoe/xorpay_net.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 个人支付（微信、支付宝）解决方案 [XorPay](https://xorpay.com/?r=quickpay) 的.Net版本SDK与Demo。
 
 [在线演示Demo](https://xorpay.jinliniuan.com/)
@@ -18,6 +18,6 @@ XorPay简介：
 
 捐助赞赏：
 --------------
-如果这个项目对您有用，我们欢迎各方任何形式的捐助，也包括参与到项目代码更新或意见反馈中来。谢谢！
+如果这个项目对您有用，欢迎各方任何形式的捐助，也包括参与到项目代码更新或意见反馈中来。谢谢！
 
 ![Image text](http://xorpay.jinliniuan.com/alipay.jpg)

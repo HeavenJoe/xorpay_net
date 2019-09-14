@@ -23,7 +23,7 @@ namespace XorPay.Web.page
                 pay_text = "微信";
             }
 
-            notify_url = PayConfig.notify_url.StartsWith("http") ? PayConfig.notify_url : "http://" + Request.Url.Authority.Trim('/') + PayConfig.notify_url;
+            notify_url = new PayConfig().notify_url;
         }
     }
 }

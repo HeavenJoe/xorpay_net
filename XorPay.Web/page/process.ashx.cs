@@ -117,7 +117,7 @@ namespace XorPay.Web.page
             string data_info = "";
             try
             {
-                string strInfo = PayRequest.SendRequest("https://xorpay.com/api/query/" + aoid, "", "GET", "UTF-8");
+                string strInfo = PayRequest.SendRequest($"https://xorpay.com/api/query/{aoid}", "", "GET", "UTF-8");
                 if (!string.IsNullOrWhiteSpace(strInfo))
                 {
                     statusInfo info = JsonHelper.JSONToObject<statusInfo>(strInfo);
@@ -168,7 +168,7 @@ namespace XorPay.Web.page
             {
                 try
                 {
-                    string strInfo = PayRequest.SendRequest("https://xorpay.com/api/query/" + aoid, "", "GET", "UTF-8");
+                    string strInfo = PayRequest.SendRequest($"https://xorpay.com/api/query/{aoid}", "", "GET", "UTF-8");
                     if (!string.IsNullOrWhiteSpace(strInfo))
                     {
                         statusInfo info = JsonHelper.JSONToObject<statusInfo>(strInfo);

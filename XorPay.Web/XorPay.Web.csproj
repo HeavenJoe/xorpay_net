@@ -196,6 +196,7 @@
     <Content Include="page\refund.aspx" />
     <Content Include="page\query.aspx" />
     <Content Include="page\return_url.aspx" />
+    <Content Include="unionurl.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -285,6 +286,13 @@
       <DependentUpon>return_url.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="unionurl.aspx.cs">
+      <DependentUpon>unionurl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="unionurl.aspx.designer.cs">
+      <DependentUpon>unionurl.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="NLog.config" />

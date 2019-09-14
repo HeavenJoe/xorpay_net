@@ -73,6 +73,18 @@
         </div>
 
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>统一支付</legend>
+        </fieldset>
+
+        <div class="layui-row">
+            <div class="layui-col-xs12" style="text-align: center">
+                <div class="unioncode" style="width:200px;margin:0 auto;border:1px dashed #ffb800">
+                    
+                </div>
+            </div>
+        </div>
+
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
             <legend>相关资料</legend>
         </fieldset>
 
@@ -96,9 +108,9 @@
         <div class="layui-row">
             <div class="layui-col-xs12">
                 <div class="layui-text" style="text-align: center">
-                    <p class="layui-text"><a href="javascript:void(0)">QQ/WX：350178646</a></p>
+                    <p class="layui-text"><a href="javascript:void(0)">350178646(QQ/WX)</a></p>
                     <br />
-                    <p class="layui-text"><a href="javascript:void(0)">邮箱：350178646@qq.com</a></p>
+                    <p class="layui-text"><a target="_blank" href="https://github.com/HeavenJoe/xorpay_net">GitHub(Download)</a></p>
                     <br />
                 </div>
             </div>
@@ -107,6 +119,8 @@
     </div>
 
     <script type="text/javascript" src="/layui/layui.js"></script>
+    <script type="text/javascript" src="/layui/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="/layui/jquery-qrcode.min.js"></script>
     <script>
         layui.use(['layer', 'form', 'jquery'], function () {
             var layer = layui.layer
@@ -124,6 +138,8 @@
                         return false;
                     });
                 }
+
+                createCode(".unioncode","<%=unionurl%>");
 
                 $(".lay-href-btn").on("click", function () {
                     var href = $(this).data('href');
@@ -173,6 +189,61 @@
                             location.hash = hash;
                         }
                     }
+                });
+            }
+
+            function createCode(obj, data) {
+                $(obj).html("");
+                $(obj).qrcode({
+                    // render method: 'canvas', 'image' or 'div'
+                    render: 'image',
+
+                    // version range somewhere in 1 .. 40
+                    minVersion: 1,
+                    maxVersion: 40,
+
+                    // error correction level: 'L', 'M', 'Q' or 'H'
+                    ecLevel: 'H',
+
+                    // offset in pixel if drawn onto existing canvas
+                    left: 0,
+                    top: 0,
+
+                    // size in pixel
+                    size: 200,
+
+                    // code color or image element
+                    fill: '#000',
+
+                    // background color or image element, null for transparent background
+                    background: '#fff',
+
+                    // content
+                    text: data,
+
+                    // corner radius relative to module width: 0.0 .. 0.5
+                    radius: 0.5,
+
+                    // quiet zone in modules
+                    quiet: 2,
+
+                    // modes
+                    // 0: normal
+                    // 1: label strip
+                    // 2: label box
+                    // 3: image strip
+                    // 4: image box
+                    mode: 2,
+
+                    mSize: 0.1,
+                    mPosX: 0.5,
+                    mPosY: 0.5,
+
+                    label: '',
+                    fontname: 'sans',
+                    fontcolor: '#000',
+
+                    image: null
                 });
             }
 

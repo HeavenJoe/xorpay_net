@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace XorPay.SDK
 {
@@ -11,6 +12,19 @@ namespace XorPay.SDK
     /// </summary>
     public class PayConfig
     {
+        /// <summary>
+        /// 域名
+        /// </summary>
+        public string protocol = "";
+
+        public PayConfig()
+        {
+            protocol = string.IsNullOrWhiteSpace(protocol) ? $"http{(HttpContext.Current.Request.IsSecureConnection ? "s" : "")}://{HttpContext.Current.Request.Url.Authority.Trim('/')}" : "";
+            notify_url = $"{protocol}{notify_url}";
+            return_url = $"{protocol}{return_url}";
+            cancel_url = $"{protocol}{return_url}";
+        }
+
         /// <summary>
         /// aid
         /// </summary>
@@ -24,17 +38,17 @@ namespace XorPay.SDK
         /// <summary>
         /// 回调通知地址
         /// </summary>
-        public const string notify_url = "/page/notify_url.aspx";
+        public string notify_url = "/page/notify_url.aspx";
 
         /// <summary>
         /// 支付成功跳转地址
         /// </summary>
-        public const string return_url = "/page/return_url.aspx";
+        public string return_url = "/page/return_url.aspx";
 
         /// <summary>
         /// 取消支付跳转地址
         /// </summary>
-        public const string cancel_url = "/page/cancel_url.aspx";
+        public string cancel_url = "/page/cancel_url.aspx";
 
     }
 }

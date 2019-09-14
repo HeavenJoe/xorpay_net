@@ -10,7 +10,7 @@ namespace XorPay.Web.page
 {
     public partial class jsapipay : System.Web.UI.Page
     {
-        protected string wxJsApiParam = "{}", return_url="", cancel_url="";
+        protected string wxJsApiParam = "{}", return_url = "", cancel_url = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,8 +21,10 @@ namespace XorPay.Web.page
                 wxJsApiParam = string.IsNullOrWhiteSpace(jsapiInfo) ? "{}" : jsapiInfo;
             }
 
-            return_url = PayConfig.notify_url.StartsWith("http") ? PayConfig.return_url : "http://" + Request.Url.Authority.Trim('/') + PayConfig.return_url;
-            cancel_url = PayConfig.notify_url.StartsWith("http") ? PayConfig.cancel_url : "http://" + Request.Url.Authority.Trim('/') + PayConfig.cancel_url;
+            PayConfig payConfig = new PayConfig();
+
+            return_url = payConfig.return_url;
+            cancel_url = payConfig.cancel_url;
 
         }
     }

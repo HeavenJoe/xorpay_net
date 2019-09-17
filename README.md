@@ -1,4 +1,4 @@
-# XorPay_Net [![license](https://img.shields.io/github/license/HeavenJoe/xorpay_net.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+# XorPay_Net [![license](https://img.shields.io/github/license/HeavenJoe/xorpay_net.svg?v=2019)](https://www.mit-license.org/)
 个人支付（微信、支付宝）解决方案 [XorPay](https://xorpay.com/?r=quickpay) 的.Net版本SDK与Demo。
 
 [在线演示Demo](https://xorpay.jinliniuan.com/)

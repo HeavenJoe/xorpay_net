@@ -141,6 +141,7 @@ namespace XorPay.SDK
                 StreamReader sr = null;
                 try
                 {
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                     WebRequest wrq = WebRequest.Create(url + para);
                     wrq.Method = "GET";
                     WebResponse wrp = wrq.GetResponse();
@@ -165,6 +166,7 @@ namespace XorPay.SDK
                 StreamReader sr = null;
                 try
                 {
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                     HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
                     req.Method = "POST";
                     req.ContentType = "application/x-www-form-urlencoded";

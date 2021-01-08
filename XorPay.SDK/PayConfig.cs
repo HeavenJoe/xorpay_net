@@ -23,17 +23,27 @@ namespace XorPay.SDK
             notify_url = $"{protocol}{notify_url}";
             return_url = $"{protocol}{return_url}";
             cancel_url = $"{protocol}{return_url}";
+            string x_aid = System.Configuration.ConfigurationManager.AppSettings["xorpay_aid"];
+            string x_appsecert = System.Configuration.ConfigurationManager.AppSettings["xorpay_appsecert"];
+            if (!string.IsNullOrWhiteSpace(x_aid))
+            {
+                aid = x_aid;
+            }
+            if (!string.IsNullOrWhiteSpace(x_appsecert))
+            {
+                app_secret = x_appsecert;
+            }
         }
 
         /// <summary>
         /// aid
         /// </summary>
-        public const string aid = "";
+        public static string aid = "";
 
         /// <summary>
         /// app_secret
         /// </summary>
-        public const string app_secret = "";
+        public static string app_secret = "";
 
         /// <summary>
         /// 回调通知地址

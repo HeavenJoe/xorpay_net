@@ -17,7 +17,7 @@ namespace XorPay.Web
 
             string order_no = "B" + DateTime.Now.ToString("yyyyMMddHHmmss") + new Random().Next(10, 99);
 
-            float amount = PayRequest.GetQueryFloat("amount", 0.1f);
+            float amount = PayRequest.GetQueryFloat("amount", 1f);
 
             PayConfig payConfig = new PayConfig();
 
@@ -40,9 +40,9 @@ namespace XorPay.Web
             {
                 pay_type = "alipay";
             }
-            else if (userAgent.ToLower().Contains("micromessenger") || PayRequest.GetQueryString("pay_type") == "jsapi")
+            else
             {
-                pay_type = "jsapi";
+                pay_type = "native";
                 if (string.IsNullOrWhiteSpace(open_id))
                 {
                     Response.Redirect(jsapi_callback);
@@ -54,7 +54,7 @@ namespace XorPay.Web
             {
                 name = "统一支付",
                 pay_type = pay_type,
-                price = 0.1f,
+                price = 1f,
                 order_id = order_no,
                 notify_url = payConfig.notify_url,
                 order_uid = "union_test",
@@ -62,53 +62,32 @@ namespace XorPay.Web
                 openid = open_id
             };
 
-            string jsonStr = PayCore.GetPayInfo(payRequest);
             try
             {
-                if (!string.IsNullOrWhiteSpace(jsonStr))
+                if (pay_type == "native")//微信支付
                 {
-                    if (pay_type == "jsapi")//微信支付
+                    string wxUrl = PayCore.GetWXPayUrl(payRequest);
+                    if (!string.IsNullOrWhiteSpace(wxUrl))
                     {
-                        JsPayResponse model = JsonHelper.JSONToObject<JsPayResponse>(jsonStr);
-                        if (model != null)
-                        {
-                            if (model.status == "ok")
-                            {
-                                if (model.info != null)
-                                {
-                                    var jsapiInfo = JsonHelper.ObjectToJSON(model.info);
-                                    if (Orders.Add(payRequest, model.aoid, "", jsapiInfo))
-                                    {
-                                        qr = $"{payConfig.protocol}/page/jsapipay.aspx?order_no={payRequest.order_id}";
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                errormsg = PayCore.GetDictValue(PayModel.payStatusDict, model.status);
-                            }
-                        }
-                    }
-                    else//默认支付宝
-                    {
-                        CodePayResponse model = JsonHelper.JSONToObject<CodePayResponse>(jsonStr);
-                        if (model != null)
-                        {
-                            if (model.status == "ok")
-                            {
-                                qr = ((model.info != null) ? model.info.qr : "");
-                                Orders.Add(payRequest, model.aoid, qr);
-                            }
-                            else
-                            {
-                                errormsg = PayCore.GetDictValue(PayModel.payStatusDict, model.status);
-                            }
-                        }
+                        qr = wxUrl;
                     }
                 }
-                else
+                else//默认支付宝
                 {
-                    errormsg = "请求失败，请检查aid与app_secret是否正确配置，以及XorPay后台是否正常";
+                    string jsonStr = PayCore.GetPayInfo(payRequest);
+                    CodePayResponse model = JsonHelper.JSONToObject<CodePayResponse>(jsonStr);
+                    if (model != null)
+                    {
+                        if (model.status == "ok")
+                        {
+                            qr = ((model.info != null) ? model.info.qr : "");
+                            Orders.Add(payRequest, model.aoid, qr);
+                        }
+                        else
+                        {
+                            errormsg = PayCore.GetDictValue(PayModel.payStatusDict, model.status);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
